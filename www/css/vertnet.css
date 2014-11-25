@@ -504,10 +504,12 @@ input.span2.search {
 }
 
 .navbar-brand {
+	background-color: #2ECC71;
 	padding: 3px 0px 5px 0px;
 }
 
 .navbar-collapse {
+	background-color: #2ECC71;
 	padding-right: 0px;
 	padding-left: 0px;
 }
