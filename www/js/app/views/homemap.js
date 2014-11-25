@@ -36,7 +36,7 @@ define([
       this.options = {
         zoom: 5,
         scrollwheel: false,
-        center: new google.maps.LatLng(-4,-60),
+        center: new google.maps.LatLng(-5,-60),
         mapTypeId: google.maps.MapTypeId.TERRAIN
       };
     },
