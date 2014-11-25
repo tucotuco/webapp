@@ -34,9 +34,9 @@ define([
     initialize: function (options) {
       this.template = _.template(template);
       this.options = {
-        zoom: 3,
+        zoom: 5,
         scrollwheel: false,
-        center: new google.maps.LatLng(20,0),
+        center: new google.maps.LatLng(-4,-60),
         mapTypeId: google.maps.MapTypeId.TERRAIN
       };
     },

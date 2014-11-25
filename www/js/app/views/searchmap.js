@@ -65,10 +65,10 @@ define([
             return this;
           }
         this.options = {
-          zoom: 3,
+          zoom: 5,
           minZoom: 2,
           scrollwheel: false,
-          center: new google.maps.LatLng(58, -150),
+          center: new google.maps.LatLng(-5, -60),
           mapTypeId: google.maps.MapTypeId.TERRAIN,
           // Controlling the control
           disableDefaultUI: true,
