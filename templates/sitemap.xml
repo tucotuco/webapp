@@ -7,18 +7,18 @@
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
-  <loc>http://portal.vertnet.org/</loc>
+  <loc>/</loc>
 </url>
 <url>
-  <loc>http://portal.vertnet.org/search</loc>
+  <loc>/search</loc>
 </url>
 <url>
-  <loc>http://portal.vertnet.org/publishers</loc>
+  <loc>/publishers</loc>
 </url>
 <url>
-  <loc>http://portal.vertnet.org/about</loc>
+  <loc>/about</loc>
 </url>
 <url>
-  <loc>http://portal.vertnet.org/search?advanced=1</loc>
+  <loc>/search?advanced=1</loc>
 </url>
 </urlset>
