@@ -51,6 +51,7 @@ define([
       this.route('search', 'search', _.bind(this.search, this));      
       this.route('about', 'about', _.bind(this.about, this));
       this.route('publishers', 'publishers', _.bind(this.publishers, this));
+#TODO: TEC  is 'occurrece' a typo or an unexplained deliberate missspelling ala 'classs' ?     
       this.route('o/:publisher/:resource', 'occurrece', _.bind(this.occurrence, this));
       this.route('p/:publisher', 'publisher', _.bind(this.publisher, this));
       this.route('stats', 'stats', _.bind(this.stats, this));
@@ -204,7 +205,7 @@ define([
       if (!this.publisherCache) {
         map.init(_.bind(function() {
           var sql = new cartodb.SQL({ user: 'vertnet' });
-          var query = "SELECT orgname,icode,sum(count) AS records,count(title) AS resources,citation,contact,count,description,dwca,email,eml,emlrights,pubdate,title,url,license,migrator,lastindexed FROM resource GROUP BY orgname,icode,citation,contact,count,description,dwca,email,eml,emlrights,pubdate,title,url,license,migrator,lastindexed ORDER BY title";
+          var query = "SELECT orgname,icode,sum(count) AS records,count(title) AS resources,citation,contact,count,description,dwca,email,eml,emlrights,pubdate,title,url,license,migrator,lastindexed FROM resource where networks = 'Amazonia' GROUP BY orgname,icode,citation,contact,count,description,dwca,email,eml,emlrights,pubdate,title,url,license,migrator,lastindexed ORDER BY title";
           sql.execute(query, {})
             .done(_.bind(function(data) {
               this.publisherCache = _.groupBy(data.rows, _.bind(function(row) {
