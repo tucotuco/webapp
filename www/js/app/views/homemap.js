@@ -50,7 +50,7 @@ define([
       }
       map = this.map;
       cartodb.createLayer(map, 'http://vertnet.cartodb.com/api/v1/viz/loc/viz.json', {
-        query: 'select * from {{table_name}}',
+        query: "select * from {{table_name}}", // where networks='Amazonia'",
         interactivity: null, 
         infowindows: false 
       }).on('done', function(layer) {

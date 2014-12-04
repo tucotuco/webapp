@@ -154,7 +154,7 @@ define([
           // Add circle overlay and bind to marker
           this.circle = new google.maps.Circle({
             map: map,
-            radius: 200000,    // 10 miles in metres
+            radius: 200000,    // 10 miles in meters
             fillColor: '#111111',
             fillOpacity: .2,
             editable:true
@@ -567,7 +567,7 @@ define([
       } 
 
       if (this.waitingForResponse || this.cancel) {
-        console.log('No execute search... Waiting for response or a cancelled request.');
+        console.log('No execute search... Waiting for response or a canceled request.');
         return;
       }
 
