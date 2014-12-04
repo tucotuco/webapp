@@ -19,7 +19,7 @@ def load_githubbers():
     if GITHUBBERS is not None:
         return GITHUBBERS
     cdb_url = "http://vertnet.cartodb.com/api/v1/sql?%s"
-    sql = "SELECT url, split_part(url,'=', 2) as resource, icode, github_reponame as repo, github_orgname as owner FROM resource_staging order by icode, url"
+    sql = "SELECT url, split_part(url,'=', 2) as resource, icode, github_reponame as repo, github_orgname as owner FROM resource_staging order by icode, url where networks ='Amazonia'"
     rpc = urlfetch.create_rpc()
     url = cdb_url % (urllib.urlencode(dict(q=sql)))
     urlfetch.make_fetch_call(rpc, url)
@@ -40,6 +40,8 @@ routes = [
         handler='vertnet.service.github.GitHubHandler:issue_create', name='issue_create'),
 ]
 
+# TODO:  change hardcoding ???
+# the DAB project is not using GitHub for data reporting so this may not matter now 
 PUBLISHER_ORGS = {
     'museum-of-vertebrate-zoology-uc-berkeley': 'museum-of-vertebrate-zoology'    
 }

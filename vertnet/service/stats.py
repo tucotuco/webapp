@@ -6,11 +6,13 @@ from datetime import datetime
 import json
 import logging
 
+#TODO TEC  threshold_date is hard-coded and almost certainty will change
 threshold_date = datetime(2014, 04, 01)
 
 query_date_limit = format(threshold_date, '%Y-%m-%d')
 
 def getExplicitStuff(tag):
+	#TODO TEC modify this query to filter on network/version when it exists in query_log 
     url = 'https://vertnet.cartodb.com/api/v2/sql?q=select+query,%20sum%28count%29+from+query_log+where+query+like+%27%25{0}%3A%25%27%20and%20created_at%3E=date%20%27{1}%27%20group%20by%20query'.format(tag, query_date_limit)
     logging.info('QUERY URL: %s' % url)
     d = json.loads(urlopen(url).read())['rows']
@@ -42,8 +44,10 @@ def getExplicitStuff(tag):
 
 def getDownloadsData():
     # Monthly
+    #TODO TEC modify this query to filter on network/version when it exists in query_log 
     url = 'https://vertnet.cartodb.com/api/v2/sql?q=select%20concat%28year,%27-%27,month%29%20as%20date,%20queries,%20records%20from%20%28%20select%20extract%28month%20from%20date%28created_at%29%29%20as%20month,%20extract%28year%20from%20date%28created_at%29%29%20as%20year,%20count%28*%29%20as%20queries,%20sum%28count%29%20as%20records%20from%20query_log%20where%20type=%27download%27%20and%20created_at%3E=date%20%27{0}%27%20group%20by%20extract%28month%20from%20date%28created_at%29%29,%20extract%28year%20from%20date%28created_at%29%29%20order%20by%20extract%28year%20from%20date%28created_at%29%29,%20extract%28month%20from%20date%28created_at%29%29%29%20as%20foo'.format(query_date_limit)
     # Daily
+    #TODO TEC modify this query to filter on network/version when it exists in query_log 
     #url = 'https://vertnet.cartodb.com/api/v2/sql?q=select%20date%28created_at%29,%20count%28*%29%20as%20queries,%20sum%28count%29%20as%20records%20from%20query_log%20where%20type=%27download%27%20and%20created_at%3E=date%20%27{0}%27%20group%20by%20date%28created_at%29%20order%20by%20date%28created_at%29'.format(query_date_limit)
     logging.info('QUERY URL: %s' % url)
     d = json.loads(urlopen(url).read())['rows']
@@ -55,6 +59,7 @@ def getDownloadsData():
     return downloadsdata
 
 def getMetadata():
+	#TODO TEC modify this query to filter on network/version when it exists in query_log 
     url = 'https://vertnet.cartodb.com/api/v2/sql?q=select%20type,%20count%28*%29%20as%20searches,%20sum%28count%29%20as%20records%20from%20query_log%20where%20created_at%3E=date%20%27{0}%27%20group%20by%20type'.format(query_date_limit)
     logging.info('QUERY URL: %s' % url)
     d = json.loads(urlopen(url).read())['rows']
@@ -67,6 +72,7 @@ def getMetadata():
     return metadata
 
 def getRecordsQueried():
+	#TODO TEC modify this query to filter on network/version when it exists in query_log 
     url = 'https://vertnet.cartodb.com/api/v2/sql?q=select%20results_by_resource%20from%20query_log%20where%20client=%27portal-prod%27%20and%20results_by_resource%20is%20not%20null%20and%20created_at%3E=date%20%27{0}%27%20and%20results_by_resource%20%3C%3E%20%27%27'.format(query_date_limit)
     logging.info('QUERY URL: %s' % url)
     d = json.loads(urlopen(url).read())['rows']
@@ -74,6 +80,7 @@ def getRecordsQueried():
     return records_queried
 
 def getMaxDate():
+	#TODO TEC modify this query to filter on network/version when it exists in query_log 
     url = 'https://vertnet.cartodb.com/api/v2/sql?q=select%20max%28created_at%29%20from%20query_log'
     logging.info('QUERY URL: %s' % url)
     d = json.loads(urlopen(url).read())['rows'][0]['max']

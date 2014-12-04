@@ -29,8 +29,9 @@ class VertNetUser(models.User):
         # Override the datastore entity name.
         # The string that is returned here will be used to name the entity
         # group in the datastore
-        return 'VertNetUser'
-        
+        return 'VertNetUser'  # 'AmazoniaUser'
+# TODO: TEC what is the "datastore entity name" should it be changed to DAB         
+
 # Model for MapReduce index jobs. Key is mapreduce id:
 class IndexJob(ndb.Model):
     write_path = ndb.TextProperty(required=True)
@@ -51,6 +52,8 @@ DUMMY_STATS = dict(
         Herps=178000,Mammals=164787,Birds=79223),
     class_count=dict(Mammalia=371296,Amphibia=281625,Reptilia=275613,
         Aves=271059,Actinopterygii=183898,Chondrichthyes=1636,Elasmobranchii=1460))
+
+# TODO: TEC  if this is the actual stats delivery system update hardcoding      
 
 class Stats(ndb.Model):
     """Model for VertNet data statitstics."""
