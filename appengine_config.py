@@ -37,12 +37,11 @@ def get_auth():
 # a concrete instance of a string associated with a data store on
 # https://console.developers.google.com/project/vertnet-portal/datastore/query 
 
-a string associated with a data store on
 def namespace_manager_default_namespace_for_request():
     if IS_DEV:
     	return 'dwcns'
     else:
-    	return '2014-02-05a'
+    	return 'index-2014-02-05a'
 
 engineauth = {
     # Login uri. The user will be returned here if an error occures.
