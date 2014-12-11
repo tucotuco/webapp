@@ -52,7 +52,7 @@ define([
       this.route('about', 'about', _.bind(this.about, this));
       this.route('publishers', 'publishers', _.bind(this.publishers, this));
 //#TODO: TEC  is 'occurrece' a typo or an unexplained deliberate missspelling ala 'classs' ?     
-      this.route('o/:publisher/:resource', 'occurrece', _.bind(this.occurrence, this));
+      this.route('o/:publisher/:resource', 'occurrence', _.bind(this.occurrence, this));
       this.route('p/:publisher', 'publisher', _.bind(this.publisher, this));
       this.route('stats', 'stats', _.bind(this.stats, this));
       mps.subscribe('navigate', _.bind(function (place) {
