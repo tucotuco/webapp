@@ -17,7 +17,7 @@
 # Note that static assets are sources from www/ which contains full
 # sourcecode without minification.
 application: vertnet-portal
-version: dev
+version: jot-amazonia
 runtime: python27
 threadsafe: true
 api_version: 1
@@ -79,5 +79,11 @@ handlers:
 - url: /service/stats.*
   script: vertnet.service.stats.main
 
+# CRON tasks
+
+- url: /tasks/daily_portal_stats.*
+  script: vertnet.service.daily_portal_stats.main
+
+# Main handler
 - url: /.*
   script: app.handler
