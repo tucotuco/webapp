@@ -37,8 +37,8 @@ class TrackerHandler(webapp2.RequestHandler):
             res_counts = self.request.get('res_counts')
         except:
             res_counts = {}
-        #TODO TEC modify this query to filter on network/version when it exists in query_log     
-        log_sql = """INSERT INTO query_log(client,query,error,type,count,downloader,download,lat,lon, results_by_resource) VALUES ('%s','%s','%s','%s',%s,'%s','%s',%s,%s,'%s');update query_log set the_geom = CDB_LatLng(lat,lon)"""
+        #TODO TEC modify this query to filter on network/version when it exists in query_log_amazonia     
+        log_sql = """INSERT INTO query_log_amazonia(client,query,error,type,count,downloader,download,lat,lon, results_by_resource) VALUES ('%s','%s','%s','%s',%s,'%s','%s',%s,%s,'%s');update query_log_amazonia set the_geom = CDB_LatLng(lat,lon)"""
         log_sql = log_sql % (CLIENT, query, error, type, count, downloader,download,lat,lon,res_counts)
         
         rpc = urlfetch.create_rpc()
